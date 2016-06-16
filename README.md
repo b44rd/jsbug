@@ -11,13 +11,13 @@ var jsbug = require("jsbug");
 
 ##### Basic debugging
 ```javascript
-// Print "Hello debugger" (blue)
+// Print "Hello debugger" using blue color
 debug("Hello debugger"); 
 ```
 
 ##### Indicate ajax calls (start msg with a pipe)
 ```javascript
-// Print "| Requesting api" (yellow)
+// Print "| Requesting api" using yellow color
 debug("| Requesting API"); 
 ```
 
@@ -29,11 +29,11 @@ debug("API data returned", { success: true });
 
 ##### Indicate failure
 ```javascript
-// Print @ Failure: API returned unexpected dataset
+// Print @ Failure: API returned unexpected dataset using red color
 debug("API returned unexpected dataset", { success: false }); 
 ```
 
 ##### Indicate failure + Attach response object to message (collapsable)
 ```javascript
-// Print @ Failure: API returned unexpected dataset and make response object inspectable
+// Print @ Failure: API returned unexpected dataset using red color and make response object inspectable
 debug("API returned unexpected dataset", { success: false, group: [response] }); 
