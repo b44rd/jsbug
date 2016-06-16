@@ -43,4 +43,4 @@ debug("API returned unexpected dataset", { success: false, group: [response] });
 ![Screenshot](https://raw.githubusercontent.com/b44rd/jsbug/master/screenshot.png)
 
 ##### Support
-All modern browsers + IE11 and up. Feel free to contribute! 
+All modern browsers + IE11 and up (currently). Feel free to contribute! 
