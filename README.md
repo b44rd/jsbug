@@ -2,6 +2,8 @@
 
 ##### Append ?jsbug=true to url to start the party. Add ?jsbug=false to make it stop
 
+![alt tag](https://raw.githubusercontent.com/b44rd/jsbug/master/screenshot.png)
+
 ### Make it a part of the project
 ```javascript
 var debug = require("jsbug");
