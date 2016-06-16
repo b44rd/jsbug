@@ -2,7 +2,6 @@
 
 ##### Append ?jsbug=true to url to start the party. Add ?jsbug=false to make it stop
 
-
 ### Make it a part of the project
 ```javascript
 var debug = require("jsbug");
@@ -40,4 +39,8 @@ debug("API returned unexpected dataset", { success: false });
 debug("API returned unexpected dataset", { success: false, group: [response] }); 
 ```
 
-![alt tag](https://raw.githubusercontent.com/b44rd/jsbug/master/screenshot.png)
+##### Screenshot from Google Chrome
+![Screenshot](https://raw.githubusercontent.com/b44rd/jsbug/master/screenshot.png)
+
+##### Support
+All modern browsers + IE11 and up. Feel free to contribute! 
