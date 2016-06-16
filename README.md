@@ -4,7 +4,7 @@
 
 ### Make it a part of the project
 ```javascript
-var jsbug = require("jsbug");
+var debug = require("jsbug");
 ```
 
 ### Usage
