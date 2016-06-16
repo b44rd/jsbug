@@ -35,7 +35,7 @@ debug("API data returned", { success: true });
 debug("API returned unexpected dataset", { success: false }); 
 ```
 
-##### Indicate failure + Attach response object to message (collapsable)
+##### Indicate failure with grouped, inspectable properties
 ```javascript
 // Print @ Failure: API returned unexpected dataset using red color and make response object inspectable
 debug("API returned unexpected dataset", { success: false, group: [response] }); 
