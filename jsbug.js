@@ -22,47 +22,50 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 */
-define(['jquery'], function ($) {
+define([], function () {
+
     "use strict";
-    
-    var jsbug = localStorage.getItem("jsbug") !== null;
+
+    var i, color, fontsize, background, prepend, jsbug = localStorage.getItem("jsbug") !== null;
 
     // Turn on
-    if (window.location.href.indexOf("jsbug=true") > -1){
+    if (window.location.href.indexOf("jsbug=true") > -1) {
         localStorage.setItem("jsbug", true);
         jsbug = true;
     }
 
     // Turn off
-    if (window.location.href.indexOf("jsbug=false") > -1){
+    if (window.location.href.indexOf("jsbug=false") > -1) {
         localStorage.setItem("jsbug", false);
         jsbug = false;
     }
 
-    if (jsbug){
-        console.log('%cDebug console turned on. Add ?jsbug=false to url to turn off', 'color:#fff; background:#002C6D; font-size:15pt; font-weight: normal;'); // jshint ignore:line
+    if (jsbug) {
+        window.console.log("%cDebug console turned on. Add ?jsbug=false to url to turn off", "color:#fff; background:#002C6D; font-size:15pt; font-weight: normal;");
     }
 
-    return function(str, options){
+    return function(str, options) {
         if (jsbug) {
             options = options || {};
+            background = str.indexOf("|") === 0 ? "#FCB813" : "#0088CF";
+            background = options.timer ? "#fff": background;
+            color = options.timer ? "#ccc" : "#fff";
+            fontsize = options.timer ? 8 : 12;
+            prepend = "";
 
-            var background = str.indexOf("|") === 0 ? '#FCB813' : '#0088CF',
-                prepend = '';
-
-            if (typeof options.success !== 'undefined'){
-                background = options.success ? '#00A551' : '#EC1C24';
-                prepend = options.success ? '* ' : '@ Failure! ';
+            if (typeof options.success !== "undefined") {
+                background = options.success ? "#00A551" : "#EC1C24";
+                prepend = options.success ? "* " : "@ Failure! ";
             }
 
-            if (typeof options.group !== 'undefined'){
-                console.group('%c' + prepend + str, 'color:#fff; background:' + background + '; font-size:12pt; font-weight: normal;'); // jshint ignore:line
-                  $.each(options.group, function(){
-                      console.log(this); // jshint ignore:line
-                  });
-                console.groupEnd(); // jshint ignore:line
+            if (typeof options.group !== "undefined") {
+                window.console.group("%c" + prepend + str, "color:" + color + "; background:" + background + "; font-size:" + fontsize + "pt; font-weight: normal;");
+                  for (i = 0; i < options.group.length; i++){
+                      window.console.log(options.group[i]);
+                  }
+                window.console.groupEnd();
             } else {
-                console.log('%c' + prepend + str, 'color:#fff; background:' + background + '; font-size:12pt; font-weight: normal;'); // jshint ignore:line
+                window.console.log("%c" + prepend + str, "color:" + color + "; background:" + background + "; font-size:" + fontsize + "pt; font-weight: normal;");
             }
         }
     };
