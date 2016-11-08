@@ -22,7 +22,17 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 */
-define([], function () {
+(function (root, factory) {
+    if(typeof define === "function" && define.amd) {
+        define(["postal"], function(postal){
+            return (root.myModule = factory(postal));
+        });
+    } else if(typeof module === "object" && module.exports) {
+        module.exports = (root.myModule = factory(require("postal")));
+    } else {
+        root.myModule = factory(root.postal);
+    }
+}(this, function(postal) {
 
     "use strict";
 
@@ -69,4 +79,5 @@ define([], function () {
             }
         }
     };
-});
+
+}));
