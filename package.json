@@ -1,0 +1,24 @@
+{
+  "name": "jsbug",
+  "version": "1.0.0",
+  "description": "Simple, colorful javascript debugging on demand",
+  "main": "jsbug.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b44rd/jsbug.git"
+  },
+  "keywords": [
+    "jsbug",
+    "logging",
+    "console"
+  ],
+  "author": "b44rd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/b44rd/jsbug/issues"
+  },
+  "homepage": "https://github.com/b44rd/jsbug#readme"
+}
