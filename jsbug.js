@@ -22,62 +22,54 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 */
-(function (root, factory) {
-    if(typeof define === "function" && define.amd) {
-        define(["postal"], function(postal){
-            return (root.myModule = factory(postal));
-        });
-    } else if(typeof module === "object" && module.exports) {
-        module.exports = (root.myModule = factory(require("postal")));
-    } else {
-        root.myModule = factory(root.postal);
-    }
-}(this, function(postal) {
+(function(name, definition) {
+  if (typeof module != 'undefined') module.exports = definition();
+  else if (typeof define == 'function' && typeof define.amd == 'object') define(definition);
+  else this[name] = definition();
+}('mod', function() {
+  "use strict";
 
-    "use strict";
+  var i, color, fontsize, background, prepend, jsbug = localStorage.getItem("jsbug") !== null;
 
-    var i, color, fontsize, background, prepend, jsbug = localStorage.getItem("jsbug") !== null;
+  // Turn on
+  if (window.location.href.indexOf("jsbug=true") > -1) {
+    localStorage.setItem("jsbug", true);
+    jsbug = true;
+  }
 
-    // Turn on
-    if (window.location.href.indexOf("jsbug=true") > -1) {
-        localStorage.setItem("jsbug", true);
-        jsbug = true;
-    }
+  // Turn off
+  if (window.location.href.indexOf("jsbug=false") > -1) {
+    localStorage.setItem("jsbug", false);
+    jsbug = false;
+  }
 
-    // Turn off
-    if (window.location.href.indexOf("jsbug=false") > -1) {
-        localStorage.setItem("jsbug", false);
-        jsbug = false;
-    }
+  if (jsbug) {
+    window.console.log("%cDebug console turned on. Add ?jsbug=false to url to turn off", "color:#fff; background:#002C6D; font-size:15pt; font-weight: normal;");
+  }
 
+  return function(str, options) {
     if (jsbug) {
-        window.console.log("%cDebug console turned on. Add ?jsbug=false to url to turn off", "color:#fff; background:#002C6D; font-size:15pt; font-weight: normal;");
-    }
+      options = options || {};
+      background = str.indexOf("|") === 0 ? "#FCB813" : "#0088CF";
+      background = options.timer ? "#fff": background;
+      color = options.timer ? "#ccc" : "#fff";
+      fontsize = options.timer ? 8 : 12;
+      prepend = "";
 
-    return function(str, options) {
-        if (jsbug) {
-            options = options || {};
-            background = str.indexOf("|") === 0 ? "#FCB813" : "#0088CF";
-            background = options.timer ? "#fff": background;
-            color = options.timer ? "#ccc" : "#fff";
-            fontsize = options.timer ? 8 : 12;
-            prepend = "";
+      if (typeof options.success !== "undefined") {
+        background = options.success ? "#00A551" : "#EC1C24";
+        prepend = options.success ? "* " : "@ Failure! ";
+      }
 
-            if (typeof options.success !== "undefined") {
-                background = options.success ? "#00A551" : "#EC1C24";
-                prepend = options.success ? "* " : "@ Failure! ";
-            }
-
-            if (typeof options.group !== "undefined") {
-                window.console.group("%c" + prepend + str, "color:" + color + "; background:" + background + "; font-size:" + fontsize + "pt; font-weight: normal;");
-                  for (i = 0; i < options.group.length; i++){
-                      window.console.log(options.group[i]);
-                  }
-                window.console.groupEnd();
-            } else {
-                window.console.log("%c" + prepend + str, "color:" + color + "; background:" + background + "; font-size:" + fontsize + "pt; font-weight: normal;");
-            }
+      if (typeof options.group !== "undefined") {
+        window.console.group("%c" + prepend + str, "color:" + color + "; background:" + background + "; font-size:" + fontsize + "pt; font-weight: normal;");
+        for (i = 0; i < options.group.length; i++){
+          window.console.log(options.group[i]);
         }
-    };
-
+        window.console.groupEnd();
+      } else {
+        window.console.log("%c" + prepend + str, "color:" + color + "; background:" + background + "; font-size:" + fontsize + "pt; font-weight: normal;");
+      }
+    }
+  }
 }));
