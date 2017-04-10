@@ -48,10 +48,10 @@ debug("API returned unexpected dataset", { success: false, group: [response] });
 ##### Sample code
 ![Screenshot](https://raw.githubusercontent.com/b44rd/jsbug/master/samplecode.png)
 
-##### Result
+##### Default result (collapsed)
 ![Screenshot](https://raw.githubusercontent.com/b44rd/jsbug/master/collapsed.png)
 
-##### Result (collapsed)
+##### Expanded result
 ![Screenshot](https://raw.githubusercontent.com/b44rd/jsbug/master/expanded.png)
 
 ### Support
