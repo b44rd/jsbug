@@ -1,10 +1,10 @@
 {
   "name": "jsbug",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Simple, colorful javascript debugging on demand",
   "main": "jsbug.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no tests specified\" && exit 1"
   },
   "repository": {
     "type": "git",

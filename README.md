@@ -1,6 +1,11 @@
 # Simple, colorful javascript debugging on demand
 
-##### Append ?jsbug=true to url to start the party. Add ?jsbug=false to make it stop
+##### Append ?jsbug=true to url in order to enable logging through jsbug within your browser console. And simply add ?jsbug=false to disable it. Jsbug is enabled/disabled through localstorage and will not perform anything if not enabled. It´s lightweight (only 53 lines of code) and do not require any dependencies. 
+
+### Install jsbug
+```
+npm install --save jsbug
+```
 
 ### Make it a part of the project
 ```javascript
