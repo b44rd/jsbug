@@ -44,7 +44,7 @@ OTHER DEALINGS IN THE SOFTWARE.
   }
 
   if (jsbug) {
-    window.console.log("%cDebug console turned on. Add ?jsbug=false to url to turn off", "color:#fff; background:#002C6D; font-size:15pt; font-weight: normal;");
+    window.console.log("%c! Debug enabled. Set jsbug=false to turn off", "color:#fff; background:#002C6D; font-size:12pt; font-weight: normal;  padding: 2px 10px; border-radius: 10px;");
   }
 
   return function(str, options) {
@@ -61,14 +61,16 @@ OTHER DEALINGS IN THE SOFTWARE.
         prepend = options.success ? "* " : "@ Failure! ";
       }
 
+      prepend = (prepend === "" && background === "#0088CF") ? "♢ " : prepend
+
       if (typeof options.group !== "undefined") {
-        window.console.group("%c" + prepend + str, "color:" + color + "; background:" + background + "; font-size:" + fontsize + "pt; font-weight: normal;");
+        window.console.groupCollapsed("%c" + prepend + str, "color:" + color + "; background:" + background + "; font-size:" + fontsize + "pt; font-weight: normal; padding: 2px 10px; border-radius: 10px;");
         for (i = 0; i < options.group.length; i++){
           window.console.log(options.group[i]);
         }
         window.console.groupEnd();
       } else {
-        window.console.log("%c" + prepend + str, "color:" + color + "; background:" + background + "; font-size:" + fontsize + "pt; font-weight: normal;");
+        window.console.log("%c" + prepend + str, "color:" + color + "; background:" + background + "; font-size:" + fontsize + "pt; font-weight: normal;  padding: 2px 10px; border-radius: 10px;");
       }
     }
   }

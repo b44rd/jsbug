@@ -4,15 +4,19 @@
 
 ### Make it a part of the project
 ```javascript
+// Require it
 var debug = require("jsbug");
+
+// Or import it
+import debug from 'jsbug'
 ```
 
 ### Usage
 
 ##### Basic debugging
 ```javascript
-// Print "Hello debugger" using blue color
-debug("Hello debugger"); 
+// Print "♢ Clicked a button" using blue color
+debug("Clicked a button"); 
 ```
 
 ##### Indicate ajax calls (start msg with a pipe)
@@ -24,12 +28,12 @@ debug("| Requesting API");
 ##### Indicate success
 ```javascript
 // Print "* JSON returned" using green color
-debug("API data returned", { success: true }); 
+debug("JSON returned", { success: true }); 
 ```
 
 ##### Indicate failure
 ```javascript
-// Print @ Failure: API returned unexpected dataset using red color
+// Print @ Failure! API returned unexpected dataset using red color
 debug("API returned unexpected dataset", { success: false }); 
 ```
 
@@ -39,8 +43,16 @@ debug("API returned unexpected dataset", { success: false });
 debug("API returned unexpected dataset", { success: false, group: [response] }); 
 ```
 
-##### Screenshot from Google Chrome
-![Screenshot](https://raw.githubusercontent.com/b44rd/jsbug/master/screenshot.png)
+### Screenshots
 
-##### Support
-All modern browsers + IE11 and up (currently). Feel free to contribute! 
+##### Sample code
+![Screenshot](https://raw.githubusercontent.com/b44rd/jsbug/master/samplecode.png)
+
+##### Result
+![Screenshot](https://raw.githubusercontent.com/b44rd/jsbug/master/collapsed.png)
+
+##### Result (collapsed)
+![Screenshot](https://raw.githubusercontent.com/b44rd/jsbug/master/expanded.png)
+
+### Support
+Most modern browsers. Feel free to contribute! 
