@@ -38,14 +38,14 @@ debug("JSON returned", { success: true });
 
 ##### Indicate failure
 ```javascript
-// Print @ Failure! API returned unexpected dataset using red color
-debug("API returned unexpected dataset", { success: false }); 
+// Print "@ Failure! Unexpected result" using red color
+debug("Unexpected result", { success: false }); 
 ```
 
 ##### Indicate failure with grouped, inspectable properties
 ```javascript
-// Print @ Failure: API returned unexpected dataset using red color and make response object inspectable
-debug("API returned unexpected dataset", { success: false, group: [response] }); 
+// Print "@ Failure: Unexpected result" using red color and make response object inspectable
+debug("Unexpected result", { success: false, group: [response] }); 
 ```
 
 ### Screenshots
