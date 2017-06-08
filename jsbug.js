@@ -26,7 +26,8 @@
   else this[name] = definition();
 }('mod', function() {
   "use strict";
-
+  
+  // Default styling
   var style = "color: #fff;font-size:12pt;font-weight:normal;padding:2px 10px;border-radius:10px;";
 
   // Turn on
@@ -46,14 +47,25 @@
   return function(str, options) {
     if (localStorage.getItem("jsbug") !== null) {
       options = options || {};
-      var background = options.color ? options.color : str.indexOf("|") === 0 ? "#FCB813" : "#0088CF";
-      var prepend = options.prepend || "♢";
-
+      var background = "#0088CF";
+      var prepend = "♢";
+      
+      // Success/failure. Defaults to green/red, with predefined prepend
       if (typeof options.success !== "undefined") {
-        prepend = options.success ? "*" : "@ Failure!";
         background = options.success ? "#00A551" : "#EC1C24";
+        prepend = options.success ? "*" : "@ Failure!";
       }
-
+      
+      // Color override
+      if (options.color) {
+        background = options.color
+      }
+      
+      // Prepend override
+      if (options.prepend) {
+        prepend = options.prepend
+      }
+      
       if (typeof options.group !== "undefined") {
         window.console.groupCollapsed("%c" + prepend + " " + str, style + "background:" + background);
         for (var i = 0; i < options.group.length; i++){

@@ -1,6 +1,6 @@
 {
   "name": "jsbug",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Simple, colorful javascript debugging on demand",
   "main": "jsbug.js",
   "repository": {
