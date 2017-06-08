@@ -39,7 +39,8 @@
   if (window.location.href.indexOf("jsbug=false") > -1) {
     localStorage.setItem("jsbug", false);
   }
-
+  
+  // Initial statement
   if (localStorage.getItem("jsbug") !== null) {
     window.console.log("%c! Debug enabled. Set jsbug=false to turn off", style + "background:#002C6D");
   }
@@ -48,12 +49,18 @@
     if (localStorage.getItem("jsbug") !== null) {
       options = options || {};
       var background = "#0088CF";
-      var prepend = "♢";
+      var prepend = "♢ ";
       
-      // Success/failure. Defaults to green/red, with predefined prepend
+      // Ajax
+      if (str.indexOf("|") === 0) {
+        background = "#FCB813"
+        prepend = ""
+      }
+      
+      // Success/failure
       if (typeof options.success !== "undefined") {
         background = options.success ? "#00A551" : "#EC1C24";
-        prepend = options.success ? "*" : "@ Failure!";
+        prepend = options.success ? "* " : "@ Failure! ";
       }
       
       // Color override
@@ -63,17 +70,17 @@
       
       // Prepend override
       if (options.prepend) {
-        prepend = options.prepend
+        prepend = options.prepend + " "
       }
-      
+
       if (typeof options.group !== "undefined") {
-        window.console.groupCollapsed("%c" + prepend + " " + str, style + "background:" + background);
+        window.console.groupCollapsed("%c" + prepend + str, style + "background:" + background);
         for (var i = 0; i < options.group.length; i++){
           window.console.log(options.group[i]);
         }
         window.console.groupEnd();
       } else {
-        window.console.log("%c" + prepend + " " + str, style + "background:" + background);
+        window.console.log("%c" + prepend + str, style + "background:" + background);
       }
     }
   }
