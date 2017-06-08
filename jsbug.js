@@ -27,10 +27,7 @@
 }('mod', function() {
   "use strict";
 
-  var fontsize = 12,
-      style = "color: #fff;font-size:" + fontsize + "pt;font-weight:normal;padding:2px 10px;border-radius:10px;",
-      prepend = "♢ ",
-      background = "#0088CF";
+  var style = "color: #fff;font-size:12pt;font-weight:normal;padding:2px 10px;border-radius:10px;";
 
   // Turn on
   if (window.location.href.indexOf("jsbug=true") > -1) {
@@ -49,21 +46,22 @@
   return function(str, options) {
     if (localStorage.getItem("jsbug") !== null) {
       options = options || {};
-      background = str.indexOf("|") === 0 ? "#FCB813" : options.color || background
+      var background = options.color ? options.color : str.indexOf("|") === 0 ? "#FCB813" : "#0088CF";
+      var prepend = options.prepend || "♢";
 
       if (typeof options.success !== "undefined") {
+        prepend = options.success ? "*" : "@ Failure!";
         background = options.success ? "#00A551" : "#EC1C24";
-        prepend = options.success ? "* " : "@ Failure! ";
       }
 
       if (typeof options.group !== "undefined") {
-        window.console.groupCollapsed("%c" + prepend + str, style + "background:" + background);
+        window.console.groupCollapsed("%c" + prepend + " " + str, style + "background:" + background);
         for (var i = 0; i < options.group.length; i++){
           window.console.log(options.group[i]);
         }
         window.console.groupEnd();
       } else {
-        window.console.log("%c" + prepend + str, style + "background:" + background);
+        window.console.log("%c" + prepend + " " + str, style + "background:" + background);
       }
     }
   }
