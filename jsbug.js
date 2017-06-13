@@ -28,25 +28,28 @@
   "use strict";
   
   // Default styling
-  var style = "color: #fff;font-size:12pt;font-weight:normal;padding:2px 10px;border-radius:10px;";
+  var jsbug = jsbug = localStorage.getItem("jsbug") !== null, 
+      style = "color: #fff;font-size:12pt;font-weight:normal;padding:2px 10px;border-radius:10px;";
 
   // Turn on
   if (window.location.href.indexOf("jsbug=true") > -1) {
     localStorage.setItem("jsbug", true);
+    jsbug = true;
   }
 
   // Turn off
   if (window.location.href.indexOf("jsbug=false") > -1) {
     localStorage.setItem("jsbug", false);
+    jsbug = false;
   }
   
   // Initial statement
-  if (localStorage.getItem("jsbug") !== null) {
+  if (jsbug) {
     window.console.log("%c! Debug enabled. Set jsbug=false to turn off", style + "background:#002C6D");
   }
 
   return function(str, options) {
-    if (localStorage.getItem("jsbug") !== null) {
+    if (jsbug) {
       options = options || {};
       var background = "#0088CF";
       var prepend = "♢ ";
