@@ -24,6 +24,12 @@ import debug from 'jsbug'
 debug("Clicked a button"); 
 ```
 
+##### Changing the color output
+```javascript
+// Print "♢ Clicked another button" using a purple color
+debug("Clicked another button", { color: '#6A36CB' }); 
+```
+
 ##### Indicate ajax calls (start msg with a pipe)
 ```javascript
 // Print "| Requesting api" using yellow color
