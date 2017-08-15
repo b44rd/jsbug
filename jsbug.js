@@ -28,18 +28,18 @@
   "use strict";
   
   // Default styling
-  var jsbug = jsbug = localStorage.getItem("jsbug") !== null, 
+  var jsbug = window.localStorage.getItem("jsbug") !== null, 
       style = "color: #fff;font-size:12pt;font-weight:normal;padding:2px 10px;border-radius:10px;";
 
   // Turn on
   if (window.location.href.indexOf("jsbug=true") > -1) {
-    localStorage.setItem("jsbug", true);
+    window.localStorage.setItem("jsbug", true);
     jsbug = true;
   }
 
   // Turn off
   if (window.location.href.indexOf("jsbug=false") > -1) {
-    localStorage.setItem("jsbug", false);
+    window.localStorage.setItem("jsbug", false);
     jsbug = false;
   }
   
