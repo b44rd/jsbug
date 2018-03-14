@@ -33,10 +33,10 @@
       console.log(str);
     }
   } else {
-  
+
     // Default styling
-    var jsbug = window.localStorage.getItem("jsbug") !== null, 
-        style = "color: #fff;font-size:12pt;font-weight:normal;padding:2px 10px;border-radius:10px;";
+    var jsbug = window.localStorage.getItem("jsbug") !== null,
+        style = "color: #fff;font-size:12pt;font-weight:normal;padding:2px 10px;border-radius:5px;";
 
     // Turn on
     if (window.location.href.indexOf("jsbug=true") > -1) {
@@ -49,7 +49,7 @@
       window.localStorage.setItem("jsbug", false);
       jsbug = false;
     }
-    
+
     // Initial statement
     if (jsbug) {
       window.console.log("%c! Debug enabled. Set jsbug=false to turn off", style + "background:#002C6D");
@@ -60,24 +60,24 @@
         options = options || {};
         var background = "#0088CF";
         var prepend = "♢ ";
-        
+
         // Ajax
         if (str.indexOf("|") === 0) {
           background = "#FCB813"
           prepend = ""
         }
-        
+
         // Success/failure
         if (typeof options.success !== "undefined") {
           background = options.success ? "#00A551" : "#EC1C24";
           prepend = options.success ? "* " : "@ Failure! ";
         }
-        
+
         // Color override
         if (options.color) {
           background = options.color
         }
-        
+
         // Prepend override
         if (options.prepend) {
           prepend = options.prepend + " "

@@ -1,6 +1,8 @@
 # Simple, colorful javascript debugging on demand
 
-##### Append ?jsbug=true to url in order to enable logging through jsbug within your browser console. And simply add ?jsbug=false to disable it. Jsbug is enabled/disabled through localstorage and will not perform anything if not enabled. It´s incredibly lightweight and do not require any dependencies. 
+##### Append ?jsbug=true to url in order to enable logging through jsbug within your browser console. And simply add ?jsbug=false to disable it. Jsbug is enabled/disabled through localstorage and will not perform anything if not enabled. It´s incredibly lightweight and do not require any dependencies.
+
+## 👉 [Try it](https://b44rd.github.io/jsbug.html) 👈
 
 ### Install jsbug
 ```
@@ -21,37 +23,37 @@ import debug from 'jsbug'
 ##### Basic debugging
 ```javascript
 // Print "♢ Clicked a button" using blue color
-debug("Clicked a button"); 
+debug("Clicked a button");
 ```
 
 ##### Changing the color output
 ```javascript
 // Print "♢ Clicked another button" using a purple color
-debug("Clicked another button", { color: '#6A36CB' }); 
+debug("Clicked another button", { color: '#6A36CB' });
 ```
 
 ##### Indicate ajax calls (start msg with a pipe)
 ```javascript
 // Print "| Requesting api" using yellow color
-debug("| Requesting API"); 
+debug("| Requesting API");
 ```
 
 ##### Indicate success
 ```javascript
 // Print "* JSON returned" using green color
-debug("JSON returned", { success: true }); 
+debug("JSON returned", { success: true });
 ```
 
 ##### Indicate failure
 ```javascript
 // Print "@ Failure! Unexpected result" using red color
-debug("Unexpected result", { success: false }); 
+debug("Unexpected result", { success: false });
 ```
 
 ##### Indicate failure with grouped, inspectable properties
 ```javascript
 // Print "@ Failure: Unexpected result" using red color and make response object inspectable
-debug("Unexpected result", { success: false, group: [response] }); 
+debug("Unexpected result", { success: false, group: [response] });
 ```
 
 ### Screenshots
@@ -66,4 +68,4 @@ debug("Unexpected result", { success: false, group: [response] });
 ![Screenshot](https://raw.githubusercontent.com/b44rd/jsbug/master/expanded.png)
 
 ### Support
-Most modern browsers. Feel free to contribute! 
+Most modern browsers. Feel free to contribute!
